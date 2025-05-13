@@ -19,7 +19,9 @@ function Home() {
   // };
   return (
     <Fragment>
-      <div><h1>aaaaaaaaaaaaaaaa</h1></div>
+      <div>
+        <h1 className="font-semibold">DashBoard</h1>
+      </div>
     </Fragment>
   );
 }

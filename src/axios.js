@@ -5,7 +5,7 @@ const history = createBrowserHistory();
 
 const instance = axios.create({
   baseURL: process.env.REACT_APP_BACKEND_URL,
-  withCredentials: true,
+  //withCredentials: true,
 });
 
 // Response interceptor: Trích xuất dữ liệu trả về

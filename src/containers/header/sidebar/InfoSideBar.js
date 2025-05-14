@@ -1,6 +1,6 @@
 import React from "react";
 
-function InfoSideBar({ show, onClose }) {
+function InfoSideBar({ show, onClose, info }) {
   return (
     <>
       {/* Overlay background (optional) */}
@@ -32,26 +32,24 @@ function InfoSideBar({ show, onClose }) {
             <span className="px-6 py-5 rounded-full bg-white shadow">
               <i className="fa-solid fa-user-tie text-2xl"></i>
             </span>
-            <span className="mt-2 text-lg font-medium">
-              Trịnh Quốc Gia Hưng
-            </span>
+            <span className="mt-2 text-lg font-medium">{info.name}</span>
           </div>
           <div className="space-y-2">
             <div className="flex justify-between">
               <span className="font-bold">Chức vụ:</span>
-              <span>Giám đốc</span>
+              <span>{info.roleInfo.role_name}</span>
             </div>
             <div className="flex justify-between">
               <span className="font-bold">Số điện thoại:</span>
-              <span>0918123762</span>
+              <span>{info.phone}</span>
             </div>
             <div className="flex justify-between">
               <span className="font-bold">Email:</span>
-              <span>giahung@gmail.com</span>
+              <span>{info.email}</span>
             </div>
             <div className="flex justify-between">
               <span className="font-bold">Ngày bắt đầu làm việc:</span>
-              <span>11/12/2025</span>
+              <span>{new Date(info.createdAt).toLocaleDateString("en-GB")}</span>
             </div>
           </div>
         </div>

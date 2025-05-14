@@ -23,7 +23,7 @@ function LabourContractSideBar({ show, onClose }) {
         `}
       >
         <div className="flex justify-end p-4 flex items-center justify-between bg-yellow-300">
-          <span>TẠO HỢP ĐỒNG MỚI</span>
+          <span>HỢP ĐỒNG LAO ĐỘNG</span>
           <button
             onClick={() => {
               onClose("labour");
@@ -60,10 +60,11 @@ function LabourContractSideBar({ show, onClose }) {
             <label className="text-sm font-medium text-gray-500 mb-1">
               Bên B <span className="text-red-500">*</span>
             </label>
-            <select className="w-full h-7 px-3 bg-gray-100 border border-gray-300 rounded focus:outline-none text-sm focus:ring-2 focus:ring-blue-400">
-              <option value="active">Công ty A</option>
-              <option value="inactive">Công ty B</option>
-            </select>
+            <input
+              type="text"
+              className="w-full h-7 px-3 bg-gray-100 border border-gray-300 rounded focus:outline-none text-sm focus:ring-2 focus:ring-blue-400"
+              placeholder="Nhập mã tên đối tác"
+            />
           </div>
           <div className="flex flex-col">
             <label className="text-sm font-medium text-gray-500 mb-1">
@@ -77,12 +78,41 @@ function LabourContractSideBar({ show, onClose }) {
           </div>
           <div className="flex flex-col">
             <label className="text-sm font-medium text-gray-500 mb-1">
+              Vị trí <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              className="w-full h-7 px-3 bg-gray-100 border border-gray-300 rounded focus:outline-none text-sm focus:ring-2 focus:ring-blue-400"
+              placeholder="Nhập mã vị trí"
+            />
+          </div>
+          <div className="flex flex-col">
+            <label className="text-sm font-medium text-gray-500 mb-1">
+              Mức lương <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="number"
+              className="w-full h-7 px-3 bg-gray-100 border border-gray-300 rounded focus:outline-none text-sm focus:ring-2 focus:ring-blue-400"
+              placeholder="Nhập mức lương"
+            />
+          </div>
+          <div className="flex flex-col">
+            <label className="text-sm font-medium text-gray-500 mb-1">
+              Giờ làm việc<span className="text-red-500">*</span>
+            </label>
+            <input
+              type="number"
+              className="w-full h-7 px-3 bg-gray-100 border border-gray-300 rounded focus:outline-none text-sm focus:ring-2 focus:ring-blue-400"
+              placeholder="Nhập giờ làm việc"
+            />
+          </div>
+          <div className="flex flex-col">
+            <label className="text-sm font-medium text-gray-500 mb-1">
               Ngày bắt đầu <span className="text-red-500">*</span>
             </label>
             <input
               type="date"
               className="w-full h-7 px-3 bg-gray-100 border border-gray-300 rounded focus:outline-none text-sm focus:ring-2 focus:ring-blue-400"
-              placeholder="Nhập mã hợp đồng"
             />
           </div>
           <div className="flex flex-col">
@@ -92,7 +122,6 @@ function LabourContractSideBar({ show, onClose }) {
             <input
               type="date"
               className="w-full h-7 px-3 bg-gray-100 border border-gray-300 rounded focus:outline-none text-sm focus:ring-2 focus:ring-blue-400"
-              placeholder="Nhập mã hợp đồng"
             />
           </div>
           <div className="flex flex-col">
@@ -114,16 +143,7 @@ function LabourContractSideBar({ show, onClose }) {
               <option value="inactive">Ngừng hoạt động</option>
             </select>
           </div>
-          <div className="flex flex-col col-span-2">
-            <label className="text-sm font-medium text-gray-500 mb-1">
-              Nội dung <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="textarea"
-              className="w-full h-7 px-3 bg-gray-100 border border-gray-300 rounded focus:outline-none text-sm focus:ring-2 focus:ring-blue-400"
-              placeholder="Nhập mã nọi dung hợp đồng"
-            />
-          </div>
+
           <div className="flex flex-col col-span-2 mt-2">
             <label className="text-sm font-medium text-gray-500 mb-1">
               Tệp đính kèm

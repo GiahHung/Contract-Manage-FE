@@ -18,26 +18,23 @@ class App extends Component {
             <span className="content-container">
               <Routes>
                 <Route path={path.LOGIN} element={<Login />} />
+                {isLoggedIn && (
+                  <Route path="/home/*" element={<Home />}>
+                    <Route path="dash-board" element={<DashBoard />} />
 
-                <Route path="/home/*" element={<Home />}>
-                  <Route path="dash-board" element={<DashBoard />} />
-
-                  <Route path="*" element={<Navigate to={systemMenuPath} />} />
-                </Route>
-              </Routes>
-              {/* {isLoggedIn && (
-                  <>
-                    <Route path={path.HOMEPAGE} element={<Home />} />
-                  </>
+                    <Route
+                      path="*"
+                      element={<Navigate to={systemMenuPath} />}
+                    />
+                  </Route>
                 )}
-
-            
                 <Route
                   path="*"
                   element={
                     <Navigate to={isLoggedIn ? systemMenuPath : path.LOGIN} />
                   }
-                /> */}
+                />
+              </Routes>
             </span>
 
             <ToastContainer

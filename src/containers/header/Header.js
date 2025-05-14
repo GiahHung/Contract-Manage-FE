@@ -5,16 +5,12 @@ import { useNavigate } from "react-router-dom";
 import * as actions from "../../store/actions";
 import { Link } from "react-router-dom";
 function Header() {
-  // const navigate = useNavigate();
-  // const userInfo = useSelector((state) => state.user.userInfo);
-  // const dispatch = useDispatch();
-  // const handleLogout = () => {
-  //   dispatch(actions.processLogout());
-  // };
-  // const handleSearchChange = (e) => {
-  //   const query = e.target.value;
-  //   dispatch(actions.fetchAllProduct(query));
-  // };
+  const navigate = useNavigate();
+  const userInfo = useSelector((state) => state.user.userInfo);
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(actions.processLogout());
+  };
   //   const handleNavigateToHome = () => {
   //     navigate("/home");
   //   };
@@ -303,7 +299,7 @@ function Header() {
                   ></path>
                 </svg>
               </span>
-              <span class="ml-2 text-sm tracking-wide truncate capitalize hidden lg:block">
+              <span class="ml-2 text-sm tracking-wide truncate capitalize hidden lg:block" onClick={handleLogout}>
                 Logout
               </span>
             </div>

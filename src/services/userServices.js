@@ -1,7 +1,7 @@
 import axios from "../axios";
 
 const handleLoginService = (data) => {
-  return axios.post("/api/employee/login", data);
+  return axios.post("/api/user/login", data);
 };
 
 const createOrderService = (data) => {

@@ -3,9 +3,13 @@ import InfoSideBar from "./sidebar/InfoSideBar";
 import LabourContractSideBar from "./sidebar/LabourContractSideBar";
 import CommercialContractSideBar from "./sidebar/CommercialContractSideBar";
 import ConstructionContractSideBar from "./sidebar/ConstructionContractSideBar";
+import { useSelector, useDispatch } from "react-redux";
 function Profile() {
+  const userInfo = useSelector((state) => state.user.userInfo);
+  const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [showInfoSidebar, setShowInfoSidebar] = useState(false);
+  const [user, setUser] = useState(userInfo);
   const toggleInfoSidebar = () => setShowInfoSidebar((prev) => !prev);
   const [showLabourContractSidebar, setShowLabourContractSidebar] =
     useState(false);
@@ -33,6 +37,7 @@ function Profile() {
       setShowConstructionContractSidebar(false);
     }
   };
+  console.log("userInfo", user);
   return (
     <Fragment>
       {/* Header Bar */}
@@ -43,7 +48,7 @@ function Profile() {
         >
           <i class="fa-solid fa-plus"></i> ADD NEW
         </button>
-        <span className="mr-2">Trịnh Quốc Gia Hưng</span>
+        <span className="mr-2">{userInfo.name}</span>
         <span
           onClick={toggleInfoSidebar}
           className="px-2 py-1 rounded-full bg-yellow-400 hover:bg-yellow-300 cursor-pointer"
@@ -114,7 +119,7 @@ function Profile() {
         show={showConstructionContractSidebar}
         onClose={closeContractSidebar}
       />
-      <InfoSideBar show={showInfoSidebar} onClose={toggleInfoSidebar} />
+      <InfoSideBar info={user} show={showInfoSidebar} onClose={toggleInfoSidebar} />
     </Fragment>
   );
 }

@@ -23,7 +23,7 @@ function ConstructionContractSideBar({ show, onClose }) {
           `}
         >
           <div className="flex justify-end p-4 flex items-center justify-between bg-yellow-300">
-            <span>TẠO HỢP ĐỒNG MỚI xxxx</span>
+            <span>HỢP ĐỒNG XÂY DỰNG</span>
             <button
               onClick={() => {
                 onClose("construction");
@@ -44,7 +44,7 @@ function ConstructionContractSideBar({ show, onClose }) {
                 placeholder="Nhập mã hợp đồng"
               />
             </div>
-  
+
             <div className="flex flex-col">
               <label className="text-sm font-medium text-gray-500 mb-1">
                 Người tạo hợp đồng <span className="text-red-500">*</span>
@@ -55,7 +55,7 @@ function ConstructionContractSideBar({ show, onClose }) {
                 placeholder="Nhập tên người tạo hợp đồng"
               />
             </div>
-  
+
             <div className="flex flex-col">
               <label className="text-sm font-medium text-gray-500 mb-1">
                 Bên B <span className="text-red-500">*</span>
@@ -77,6 +77,26 @@ function ConstructionContractSideBar({ show, onClose }) {
             </div>
             <div className="flex flex-col">
               <label className="text-sm font-medium text-gray-500 mb-1">
+                Địa điểm thi công <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                className="w-full h-7 px-3 bg-gray-100 border border-gray-300 rounded focus:outline-none text-sm focus:ring-2 focus:ring-blue-400"
+                placeholder="Nhập địa điểm thi công"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="text-sm font-medium text-gray-500 mb-1">
+                Ngân sách <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="number"
+                className="w-full h-7 px-3 bg-gray-100 border border-gray-300 rounded focus:outline-none text-sm focus:ring-2 focus:ring-blue-400"
+                placeholder="Nhập ngân sách"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="text-sm font-medium text-gray-500 mb-1">
                 Ngày bắt đầu <span className="text-red-500">*</span>
               </label>
               <input
@@ -87,7 +107,7 @@ function ConstructionContractSideBar({ show, onClose }) {
             </div>
             <div className="flex flex-col">
               <label className="text-sm font-medium text-gray-500 mb-1">
-                Ngày kết thúc <span className="text-red-500">*</span>
+                Dự kiến hoàn thành <span className="text-red-500">*</span>
               </label>
               <input
                 type="date"
@@ -114,21 +134,11 @@ function ConstructionContractSideBar({ show, onClose }) {
                 <option value="inactive">Ngừng hoạt động</option>
               </select>
             </div>
-            <div className="flex flex-col col-span-2">
-              <label className="text-sm font-medium text-gray-500 mb-1">
-                Nội dung <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="textarea"
-                className="w-full h-7 px-3 bg-gray-100 border border-gray-300 rounded focus:outline-none text-sm focus:ring-2 focus:ring-blue-400"
-                placeholder="Nhập mã nọi dung hợp đồng"
-              />
-            </div>
             <div className="flex flex-col col-span-2 mt-2">
               <label className="text-sm font-medium text-gray-500 mb-1">
                 Tệp đính kèm
               </label>
-  
+
               <div
                 className=" border-2 border-dashed border-gray-300 rounded-md p-4 flex flex-col items-center justify-center text-center cursor-pointer hover:border-blue-400 transition-all"
                 onClick={() => document.getElementById("fileInput").click()}
@@ -155,7 +165,7 @@ function ConstructionContractSideBar({ show, onClose }) {
                   </>
                 )}
               </div>
-  
+
               <input
                 id="fileInput"
                 type="file"
@@ -176,7 +186,7 @@ function ConstructionContractSideBar({ show, onClose }) {
               )}
             </div>
           </div>
-  
+
           <div className="absolute bottom-0 left-0 w-full">
             <button className="bg-gray-200 w-1/2 py-1 text-gray-400 hover:text-primary-400">
               XÓA

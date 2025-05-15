@@ -128,7 +128,10 @@ function Header() {
                   </div>
                 </div>
               </div>
-              <Link class="flex flex-row items-center  justify-center lg:justify-start rounded-md h-12 focus:outline-none pr-3.5  lg:pr-6 font-semibold text-gray-500 hover:text-primary-400 hover:bg-yellow-400 cursor-pointer ">
+              <Link
+                to="/home/dash-board"
+                class="flex flex-row items-center  justify-center lg:justify-start rounded-md h-12 focus:outline-none pr-3.5  lg:pr-6 font-semibold text-gray-500 hover:text-primary-400 hover:bg-yellow-400 cursor-pointer "
+              >
                 <span class="inline-flex justify-center items-center ml-3.5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -151,7 +154,10 @@ function Header() {
                   DashBoard
                 </span>
               </Link>
-              <Link class="flex flex-row items-center  justify-center lg:justify-start rounded-md h-12 focus:outline-none pr-3.5  lg:pr-6 font-semibold text-gray-500 hover:text-primary-400 hover:bg-yellow-400 cursor-pointer ">
+              <Link
+                to="/home/contract"
+                class="flex flex-row items-center  justify-center lg:justify-start rounded-md h-12 focus:outline-none pr-3.5  lg:pr-6 font-semibold text-gray-500 hover:text-primary-400 hover:bg-yellow-400 cursor-pointer "
+              >
                 <span class="inline-flex justify-center items-center ml-3.5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -184,7 +190,10 @@ function Header() {
                   Contracts
                 </span>
               </Link>
-              <Link class="flex flex-row items-center  justify-center lg:justify-start rounded-md h-12 focus:outline-none pr-3.5  lg:pr-6 font-semibold text-gray-500 hover:text-primary-400 hover:bg-yellow-400 cursor-pointer ">
+              <Link
+                to="/home/notification"
+                class="flex flex-row items-center  justify-center lg:justify-start rounded-md h-12 focus:outline-none pr-3.5  lg:pr-6 font-semibold text-gray-500 hover:text-primary-400 hover:bg-yellow-400 cursor-pointer "
+              >
                 <span class="inline-flex justify-center items-center ml-3.5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -299,7 +308,10 @@ function Header() {
                   ></path>
                 </svg>
               </span>
-              <span class="ml-2 text-sm tracking-wide truncate capitalize hidden lg:block" onClick={handleLogout}>
+              <span
+                class="ml-2 text-sm tracking-wide truncate capitalize hidden lg:block"
+                onClick={handleLogout}
+              >
                 Logout
               </span>
             </div>

@@ -6,6 +6,8 @@ import { path } from "../utils/constant";
 import Login from "./Auth/Login";
 import DashBoard from "../containers/Homepage/DashBoard";
 import Home from "../routes/Home";
+import NotificationPage from "./Homepage/NotificationPage";
+import ContractPage from "./Homepage/ContractPage";
 class App extends Component {
   render() {
     const { systemMenuPath, isLoggedIn, userInfo } = this.props;
@@ -21,6 +23,8 @@ class App extends Component {
                 {isLoggedIn && (
                   <Route path="/home/*" element={<Home />}>
                     <Route path="dash-board" element={<DashBoard />} />
+                    <Route path="contract" element={<ContractPage />} />
+                    <Route path="notification" element={<NotificationPage />} />
 
                     <Route
                       path="*"

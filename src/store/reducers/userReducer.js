@@ -3,16 +3,13 @@ import actionTypes from "../actions/actionTypes";
 const initialState = {
   isLoggedIn: false,
   userInfo: null,
-  order: "",
-  products: [],
-  productCategory: [],
-  orderCreate: "",
-  customers: [],
+  arrRole: [],
+  arrUser: [],
+  arrCustomer: [],
 };
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOGIN_SUCCESS:
-      //   console.log("check action:::::::::", action);
       return {
         ...state,
         isLoggedIn: true,
@@ -31,106 +28,38 @@ const userReducer = (state = initialState, action) => {
         isLoggedIn: false,
         userInfo: null,
       };
-    case actionTypes.FETCH_ALL_PRODUCT_SUCCESS:
+    case actionTypes.FETCH_ROLE_SUCCESS:
       return {
         ...state,
-        products: action.data,
+        arrRole: action.data,
       };
-    case actionTypes.FETCH_ALL_PRODUCT_FAIL:
+
+    case actionTypes.FETCH_ROLE_FAIL:
       return {
         ...state,
-        products: [],
+        arrRole: [],
       };
-    case actionTypes.FETCH_PRODUCT_CATEGORY_SUCCESS:
+    case actionTypes.FETCH_LIST_USER_SUCCESS:
       return {
         ...state,
-        products: action.data,
+        arrUser: action.data,
       };
-    case actionTypes.FETCH_PRODUCT_CATEGORY_FAIL:
+
+    case actionTypes.FETCH_LIST_USER_FAIL:
       return {
         ...state,
-        products: [],
+        arrUser: [],
       };
-    case actionTypes.CREATE_ORDER_SUCCESS:
-      console.log("order reducer", action.data);
+    case actionTypes.FETCH_CUSTOMER_PAGE_SUCCESS:
       return {
         ...state,
-        orderCreate: action.data,
+        arrCustomer: action.data,
       };
-    case actionTypes.CREATE_ORDER_FAIL:
+
+    case actionTypes.FETCH_CUSTOMER_PAGE_FAIL:
       return {
         ...state,
-        orderCreate: "",
-      };
-    case actionTypes.FETCH_ONE_ORDER_SUCCESS:
-      return {
-        ...state,
-        order: action.data,
-      };
-    case actionTypes.FETCH_ONE_ORDER_FAIL:
-      return {
-        ...state,
-        order: "",
-      };
-    case actionTypes.ADD_PRODUCT_TO_ORDER_SUCCESS:
-      return {
-        ...state,
-        order: action.data,
-      };
-    case actionTypes.ADD_PRODUCT_TO_ORDER_FAIL:
-      return {
-        ...state,
-        order: [],
-      };
-    case actionTypes.ADD_DISCOUNT_CODE_SUCCESS:
-      return {
-        ...state,
-        order: action.data,
-      };
-    // case actionTypes.ADD_DISCOUNT_CODE_FAIL:
-    //   return {
-    //     ...state,
-    //     order: [],
-    //   };
-    case actionTypes.ADD_VOUCHER_CODE_SUCCESS:
-      return {
-        ...state,
-        order: action.data,
-      };
-    // case actionTypes.ADD_VOUCHER_CODE_FAIL:
-    //   return {
-    //     ...state,
-    //     order: [],
-    //   };
-    case actionTypes.REMOVE_PRODUCT_FROM_ORDER_SUCCESS:
-      return {
-        ...state,
-        order: action.data,
-      };
-    case actionTypes.REMOVE_PRODUCT_FROM_ORDER_FAIL:
-      return {
-        ...state,
-        order: [],
-      };
-    case actionTypes.FETCH_CUSTOMER_SUCCESS:
-      return {
-        ...state,
-        customers: action.data,
-      };
-    case actionTypes.FETCH_CUSTOMER_FAIL:
-      return {
-        ...state,
-        customers: [],
-      };
-    case actionTypes.DESELECT_CUSTOMER_SUCCESS:
-      return {
-        ...state,
-        order: action.data,
-      };
-    case actionTypes.DESELECT_CUSTOMER_FAIL:
-      return {
-        ...state,
-        order: [],
+        arrCustomer: [],
       };
     default:
       return state;

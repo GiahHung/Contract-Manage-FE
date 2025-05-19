@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../../store/actions";
 import { toast } from "react-toastify";
-function LabourContractSideBar({ show, onClose }) {
+function LabourContractSideBar({ show, onClose, arrEmployee }) {
   const dispatch = useDispatch();
+ 
   const [formLabour, setFormLabour] = useState({
     contract_code: "",
     type_id: "1",
@@ -20,6 +21,7 @@ function LabourContractSideBar({ show, onClose }) {
   });
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewURL, setPreviewURL] = useState(null);
+  
   useEffect(() => {
     if (show) {
       setFormLabour({
@@ -117,7 +119,6 @@ function LabourContractSideBar({ show, onClose }) {
     setPreviewURL(null);
     onClose("labour");
   };
-  console.log("formLabour", formLabour);
   return (
     <>
       {show && <div className="fixed inset-0 bg-black bg-opacity-30 z-40" />}
@@ -158,14 +159,23 @@ function LabourContractSideBar({ show, onClose }) {
             <label className="text-sm font-medium text-gray-500 mb-1">
               Người tạo hợp đồng <span className="text-red-500">*</span>
             </label>
-            <input
+            <select
+              name="employee_id"
               value={formLabour.employee_id}
               onChange={handleChange}
-              name="employee_id"
-              type="text"
               className="w-full h-7 px-3 bg-gray-100 border border-gray-300 rounded focus:outline-none text-sm focus:ring-2 focus:ring-blue-400"
-              placeholder="Nhập tên người tạo hợp đồng"
-            />
+            >
+              <option value="">-- Chọn người tạo hợp đồng --</option>
+              {arrEmployee &&
+                arrEmployee.length > 0 &&
+                arrEmployee.map((item, index) => {
+                  return (
+                    <option key={index} value={item.id}>
+                      {item.name}
+                    </option>
+                  );
+                })}
+            </select>
           </div>
 
           <div className="flex flex-col">

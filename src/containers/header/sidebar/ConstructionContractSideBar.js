@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../../store/actions";
 import { toast } from "react-toastify";
 
-function ConstructionContractSideBar({ show, onClose }) {
+function ConstructionContractSideBar({ show, onClose, arrEmployee, arrCustomer }) {
   const dispatch = useDispatch();
+
   const [formConstruction, setFormConstruction] = useState({
     contract_code: "",
     type_id: "3",
@@ -21,6 +22,7 @@ function ConstructionContractSideBar({ show, onClose }) {
   const [selectedFileConstruction, setSelectedFileConstruction] =
     useState(null);
   const [previewURL, setPreviewURL] = useState(null);
+
   useEffect(() => {
     if (show) {
       setFormConstruction({
@@ -87,7 +89,6 @@ function ConstructionContractSideBar({ show, onClose }) {
     return d.toISOString().split("T")[0];
   };
   const handleConstructFileChange = (e) => {
-    console.log("file conaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     const file = e.target.files[0];
     setSelectedFileConstruction(file);
 
@@ -122,7 +123,6 @@ function ConstructionContractSideBar({ show, onClose }) {
     setPreviewURL(null);
     onClose("construction");
   };
-  console.log("formConstruction", formConstruction);
   return (
     <>
       {show && <div className="fixed inset-0 bg-black bg-opacity-30 z-40" />}
@@ -163,14 +163,23 @@ function ConstructionContractSideBar({ show, onClose }) {
             <label className="text-sm font-medium text-gray-500 mb-1">
               Người tạo hợp đồng <span className="text-red-500">*</span>
             </label>
-            <input
-              type="text"
+            <select
               name="employee_id"
               value={formConstruction.employee_id}
               onChange={handleChange}
               className="w-full h-7 px-3 bg-gray-100 border border-gray-300 rounded focus:outline-none text-sm focus:ring-2 focus:ring-blue-400"
-              placeholder="Nhập tên người tạo hợp đồng"
-            />
+            >
+              <option value="">-- Chọn người tạo hợp đồng --</option>
+              {arrEmployee &&
+                arrEmployee.length > 0 &&
+                arrEmployee.map((item, index) => {
+                  return (
+                    <option key={index} value={item.id}>
+                      {item.name}
+                    </option>
+                  );
+                })}
+            </select>
           </div>
 
           <div className="flex flex-col">
@@ -184,8 +193,15 @@ function ConstructionContractSideBar({ show, onClose }) {
               className="w-full h-7 px-3 bg-gray-100 border border-gray-300 rounded focus:outline-none text-sm focus:ring-2 focus:ring-blue-400"
             >
               <option value="">-- Chọn công ty --</option>
-              <option value="aaaaa">Công ty A</option>
-              <option value="bbbbbbb">Công ty B</option>
+              {arrCustomer &&
+                arrCustomer.length > 0 &&
+                arrCustomer.map((item, index) => {
+                  return (
+                    <option key={index} value={item.name}>
+                      {item.name}
+                    </option>
+                  );
+                })}
             </select>
           </div>
           <div className="flex flex-col">

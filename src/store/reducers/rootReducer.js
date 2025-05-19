@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-import adminReducer from "./adminReducer";
+import contractReducer from "./contractReducer";
 import userReducer from "./userReducer";
 import appReducer from "./appReducer";
 
@@ -23,5 +23,5 @@ export default (history) =>
   combineReducers({
     user: persistReducer(userPersistConfig, userReducer),
     app: appReducer,
-    admin: adminReducer,
+    contract: contractReducer,
   });

@@ -1,12 +1,19 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import InfoSideBar from "./sidebar/InfoSideBar";
 import LabourContractSideBar from "./sidebar/LabourContractSideBar";
 import CommercialContractSideBar from "./sidebar/CommercialContractSideBar";
 import ConstructionContractSideBar from "./sidebar/ConstructionContractSideBar";
 import { useSelector, useDispatch } from "react-redux";
+import * as actions from "../../store/actions";
 function Profile() {
   const userInfo = useSelector((state) => state.user.userInfo);
   const dispatch = useDispatch();
+  const [arrEmployee, setArrEmployee] = useState([]);
+  const [arrCustomer, setArrCustomer] = useState([]);
+  const [payment, setPayment] = useState([]);
+  const listEmployee = useSelector((state) => state.user.arrUser);
+  const listCustomer = useSelector((state) => state.contract.listCustomer);
+  const listPayment = useSelector((state) => state.contract.listPayment);
   const [showModal, setShowModal] = useState(false);
   const [showInfoSidebar, setShowInfoSidebar] = useState(false);
   const [user, setUser] = useState(userInfo);
@@ -17,6 +24,24 @@ function Profile() {
     useState(false);
   const [showConstructionContractSidebar, setShowConstructionContractSidebar] =
     useState(false);
+
+  // Redux
+  useEffect(() => {
+    dispatch(actions.fetchListCustomer());
+    dispatch(actions.fetchAllUserPage("", "", "id", "asc"));
+    dispatch(actions.fetchPayment());
+  }, [dispatch]);
+  useEffect(() => {
+    if (listEmployee && listEmployee.length > 0) {
+      setArrEmployee(listEmployee);
+    }
+    if (listCustomer && listCustomer.length > 0) {
+      setArrCustomer(listCustomer);
+    }
+    if (listPayment && listPayment.length > 0) {
+      setPayment(listPayment);
+    }
+  }, [listEmployee, listCustomer, listPayment]);
   const toggleModal = () => setShowModal((prev) => !prev);
   const openContractSidebar = (contractType) => {
     if (contractType === "labour") {
@@ -37,7 +62,6 @@ function Profile() {
       setShowConstructionContractSidebar(false);
     }
   };
-  console.log("userInfo", user);
   return (
     <Fragment>
       {/* Header Bar */}
@@ -110,16 +134,27 @@ function Profile() {
       <LabourContractSideBar
         show={showLabourContractSidebar}
         onClose={closeContractSidebar}
+        arrEmployee={arrEmployee}
+        arrCustomer={arrCustomer}
       />
       <CommercialContractSideBar
         show={showCommercialContractSidebar}
         onClose={closeContractSidebar}
+        arrEmployee={arrEmployee}
+        arrCustomer={arrCustomer}
+        payment={payment}
       />
       <ConstructionContractSideBar
         show={showConstructionContractSidebar}
         onClose={closeContractSidebar}
+        arrEmployee={arrEmployee}
+        arrCustomer={arrCustomer}
       />
-      <InfoSideBar info={user} show={showInfoSidebar} onClose={toggleInfoSidebar} />
+      <InfoSideBar
+        info={user}
+        show={showInfoSidebar}
+        onClose={toggleInfoSidebar}
+      />
     </Fragment>
   );
 }
